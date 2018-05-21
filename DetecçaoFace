@@ -1,0 +1,24 @@
+#import required libraries 
+#import OpenCV library
+import cv2
+#import matplotlib library
+import matplotlib.pyplot as plt
+#importing time library for speed comparisons of both classifiers
+import time 
+# matplotlib inline
+
+def convertToRGB(img): 
+    return cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+#load test iamge
+test1 = cv2.imread('/home/paulocustodio/Projeto/fotosTreinamento/P1img1.jpg')
+#convert the test image to gray image as opencv face detector expects gray images 
+gray_img = cv2.cvtColor(test1, cv2.COLOR_BGR2GRAY)
+
+#if you have matplotlib installed then  
+plt.imshow(gray_img, cmap='gray')  
+
+# or display the gray image using OpenCV 
+# cv2.imshow('Test Imag', gray_img) 
+# cv2.waitKey(0) 
+# cv2.destroyAllWindows()
