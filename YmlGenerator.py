@@ -35,6 +35,6 @@ def getImagesAndLabels(path):
     return faceSamples,Ids
 
 
-faces,Ids = getImagesAndLabels('/home/paulocustodio/Projeto/fotosTreinamento/s1')
+faces,Ids = getImagesAndLabels('/home/paulocustodio/Projeto2/fotosTreinamento/s1')
 recognizer.train(faces, np.array(Ids))
 recognizer.save('trainner/trainner.yml')

@@ -3,7 +3,7 @@ import numpy as np
 
 faceCascadeL = cv2.CascadeClassifier('lbpcascade_frontalface.xml')
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read('/home/paulocustodio/Projeto/trainner/trainner.yml')
+recognizer.read('/home/paulocustodio/Projeto2/trainner/trainner.yml')
 cascadePath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath);
 
@@ -24,9 +24,9 @@ while True:
                 Id="Paulo"
 	        print Id
         else:
-	    if (conf<50):
+	    if (conf<0):
             	Id="Para Tras"
-	    if (conf>90):
+	    if (conf>150):
             	Id="Para frente"
 	    print Id
 	cv2.putText(im, str(Id)		, (x, y+h), cv2.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0), 2)
