@@ -2,12 +2,12 @@ import cv2
 import numpy as np
 
 faceCascadeL = cv2.CascadeClassifier('lbpcascade_frontalface.xml')
-recognizer = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read('/home/paulocustodio/Projeto2/trainner/trainner.yml')
+recognizer = cv2.face.createLBPHFaceRecognizer()
+recognizer.load('/home/pi/Desktop/Projeto2/trainner/trainner.yml')
 cascadePath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath);
 
-
+conf=60
 cam = cv2.VideoCapture(0)
 #font = cv2.InitFont(cv2.FONT_HERSHEY_PLAIN, 1, 1, 0, 1, 1)
 while True:
@@ -17,7 +17,7 @@ while True:
     faces=faceCascade.detectMultiScale(gray, 1.2,5)
     for(x,y,w,h) in faces:
         cv2.rectangle(im,(x,y),(x+w,y+h),(225,0,0),2)
-        Id, conf = recognizer.predict(gray[y:y+h,x:x+w])
+        Id = recognizer.predict(gray[y:y+h,x:x+w])
 	print conf
         if(conf>50 and conf<90):
             if(Id==2):

@@ -2,7 +2,7 @@ import cv2,os
 import numpy as np
 from PIL import Image
 
-recognizer = cv2.face.LBPHFaceRecognizer_create()
+recognizer = cv2.face.createLBPHFaceRecognizer()
 detector= cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
 
 def getImagesAndLabels(path):
@@ -35,6 +35,6 @@ def getImagesAndLabels(path):
     return faceSamples,Ids
 
 
-faces,Ids = getImagesAndLabels('/home/paulocustodio/Projeto2/fotosTreinamento/s1')
+faces,Ids = getImagesAndLabels('/home/pi/Desktop/Projeto2/fotosTreinamento/s1')
 recognizer.train(faces, np.array(Ids))
-recognizer.save('trainner/trainner.yml')
+recognizer.save('trainner/trainner2.yml')
