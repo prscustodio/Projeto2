@@ -1,0 +1,1 @@
+http://192.168.0.1XX:8080/json.htm?type=command&param=switchlight&idx=5&switchcmd=Set%20Level&level=0
