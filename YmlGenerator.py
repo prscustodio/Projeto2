@@ -1,7 +1,7 @@
 import cv2,os
 import numpy as np
 from PIL import Image
-
+import time
 recognizer = cv2.face.createLBPHFaceRecognizer()
 detector= cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
 
@@ -24,6 +24,8 @@ def getImagesAndLabels(path):
         pilImage=Image.open(imagePath).convert('L')
         #Now we are converting the PIL image into numpy array
         imageNp=np.array(pilImage,'uint8')
+	pilImage.show()
+	#time.sleep(3)
         #getting the Id from the image
         Id=int(os.path.split(imagePath)[-1].split(".")[1])
         # extract the face from the training image sample
@@ -32,9 +34,13 @@ def getImagesAndLabels(path):
         for (x,y,w,h) in faces:
             faceSamples.append(imageNp[y:y+h,x:x+w])
             Ids.append(Id)
+	    print Id
+	    #cv2.imshow('im',np.asarray(imageNp))
     return faceSamples,Ids
+
 
 
 faces,Ids = getImagesAndLabels('/home/pi/Desktop/Projeto2/fotosTreinamento/s1')
 recognizer.train(faces, np.array(Ids))
-recognizer.save('trainner/trainner2.yml')
+
+recognizer.save('trainner/trainner.yml')

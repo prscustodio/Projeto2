@@ -3,11 +3,6 @@ import RPi.GPIO as GPIO
 import time  
 import urllib
 
-#motorConfigure
-GPIO.setmode(GPIO.BOARD)   #Colocamos o Raspberry em modo BOARD
-GPIO.setup(3,GPIO.OUT)    #Colocamos o pin 21 como saida
-p = GPIO.PWM(3,50)        #Colocamos o pin 21 em modo PWM e enviamos 50 pulsos por segundo
-p.start(7.5)               #Colocamos um pulso de 7.5% para centrar o servo
 
 host = '' 
 port = 7000 
